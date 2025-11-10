@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.einkframe.com/sitemap.xml
+Sitemap: https://raytronichen.github.io/sitemap.xml
 
