@@ -1,31 +1,27 @@
-name: Jekyll site CI
+# GitHub Pages 会自动构建和部署，不需要这个工作流
+# 如果需要在 Actions 中验证构建，可以取消下面的注释
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.1'
-        bundler-cache: true
-    
-    - name: Build site
-      run: bundle exec jekyll build
-    
-    - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/main'
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_site
+# name: Jekyll site CI
+#
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     
+#     steps:
+#     - uses: actions/checkout@v3
+#     
+#     - name: Set up Ruby
+#       uses: ruby/setup-ruby@v1
+#       with:
+#         ruby-version: '3.1'
+#         bundler-cache: true
+#     
+#     - name: Build site
+#       run: bundle exec jekyll build
 
