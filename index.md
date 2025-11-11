@@ -5,7 +5,11 @@ title: Home
 
 <div class="home">
   <div class="hero">
-    <p class="intro-text">Calm, reflective, and energy-efficient — a piece of living artwork quietly powered by ePaper.</p>
+    <p class="intro-text">
+      Where technology meets stillness<br>
+      Calm, reflective, and energy-efficient —<br>
+      a piece of living artwork quietly powered by ePaper.
+    </p>
     <img src="/pics/main.jpeg" alt="ePaper Frame" class="intro-image">
   </div>
 
