@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 首页
+title: Home
 ---
 
 <div class="home">
@@ -10,11 +10,11 @@ title: 首页
   </div>
 
   <div class="posts">
-    <h2 class="posts-title">最新文章</h2>
+    <h2 class="posts-title">Latest Posts</h2>
     <ul class="post-list">
       {% for post in site.posts %}
       <li>
-        <span class="post-meta">{{ post.date | date: "%Y年%m月%d日" }}</span>
+        <span class="post-meta">{{ post.date | date: "%B %d, %Y" }}</span>
         <h3>
           <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
         </h3>
@@ -35,7 +35,7 @@ title: 首页
 
   {% if site.posts.size == 0 %}
   <div class="empty-state">
-    <p>还没有发布文章，敬请期待！</p>
+    <p>No posts yet. Stay tuned!</p>
   </div>
   {% endif %}
 </div>
