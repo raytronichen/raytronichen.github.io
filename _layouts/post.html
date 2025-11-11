@@ -9,6 +9,11 @@ layout: default
   "description": {{ page.excerpt | default: page.content | strip_html | strip_newlines | truncate: 160 | jsonify }},
   "datePublished": "{{ page.date | date_to_xmlschema }}",
   "dateModified": "{{ page.date | date_to_xmlschema }}",
+  "author": {
+    "@type": "Person",
+    "name": {{ page.author | default: "Ray Chen" | jsonify }},
+    "url": "{{ site.url }}/about"
+  },
   "publisher": {
     "@type": "Organization",
     "name": "InkJoy",
@@ -17,11 +22,6 @@ layout: default
       "@type": "ImageObject",
       "url": "{{ site.url }}/pics/main.jpeg"
     }
-  },
-  "author": {
-    "@type": "Person",
-    "name": {{ page.author | default: "Ray Chen" | jsonify }},
-    "url": "{{ site.url }}/about"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
