@@ -29,6 +29,11 @@ navigation:
 social:
   reddit: https://www.reddit.com/r/ePaperFrame/
 
+# Google Analytics
+# Get your tracking ID from: https://analytics.google.com/
+# Format: G-XXXXXXXXXX (for GA4)
+google_analytics: # Replace with your GA4 tracking ID, e.g., G-XXXXXXXXXX
+
 # Pagination
 paginate: 10
 paginate_path: "/page:num/"
