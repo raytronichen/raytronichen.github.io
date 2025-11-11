@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Looks close at E Ink Spectra™ 6
-date: 2025-01-21
-tags: [E-ink, 电子墨水, Spectra 6, 技术]
+date: 2025-11-11
+tags: [E-ink, Spectra 6, tech]
 ---
 
 Here's what E Ink Spectra™ 6 looks like under a microscope.
