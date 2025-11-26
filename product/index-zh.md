@@ -48,7 +48,7 @@ permalink: /product/zh/
 
   <div class="section-links" style="margin-top: 40px; padding-top: 40px; border-top: 1px solid #e8e8e8;">
     <p style="text-align: center; color: #666;">
-      也可以查看我们的 <a href="/tech/zh/" style="color: #0066cc;">技术栏目</a>
+      也可以查看我们的 <a href="https://www.einkframe.com/zh/" style="color: #0066cc;" target="_blank">技术栏目</a>
     </p>
   </div>
 </div>

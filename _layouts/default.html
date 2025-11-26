@@ -91,8 +91,8 @@
         <div class="trigger">
           <a class="page-link" href="{{ '/' | relative_url }}">{% if page.lang == 'zh' %}首页{% else %}Home{% endif %}</a>
           <a class="page-link" href="{{ '/about' | relative_url }}">{% if page.lang == 'zh' %}关于{% else %}About{% endif %}</a>
-          {% if site.sections.product %}
-          <a class="page-link" href="https://www.epapercanvas.com{% if page.lang == 'zh' %}/zh/{% endif %}" target="_blank">{% if page.lang == 'zh' %}产品{% else %}Product{% endif %}</a>
+          {% if site.sections.tech %}
+          <a class="page-link" href="https://www.einkframe.com{% if page.lang == 'zh' %}/zh/{% endif %}" target="_blank">{% if page.lang == 'zh' %}技术{% else %}Tech{% endif %}</a>
           {% endif %}
           <div class="lang-switcher">
             {% assign current_lang = page.lang | default: site.default_lang %}

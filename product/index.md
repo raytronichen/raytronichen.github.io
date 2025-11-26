@@ -55,7 +55,7 @@ permalink: /product/
 
   <div class="section-links" style="margin-top: 40px; padding-top: 40px; border-top: 1px solid #e8e8e8;">
     <p style="text-align: center; color: #666;">
-      Also check out our <a href="/tech/" style="color: #0066cc;">Tech section</a>
+      Also check out our <a href="https://www.einkframe.com/" style="color: #0066cc;" target="_blank">Tech section</a>
     </p>
   </div>
 </div>
