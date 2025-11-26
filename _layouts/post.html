@@ -66,12 +66,12 @@ layout: default
   </div>
 
   <div class="post-navigation">
-    {% assign current_lang = page.lang | default: site.default_lang %}
-    {% assign current_category = page.category | default: site.default_category %}
+    {% assign current_lang = page.lang | default: "en" %}
+    {% assign current_category = page.category | default: "tech" %}
     {% if current_category == 'tech' %}
-      {% assign filtered_posts = site.posts | where: "lang", current_lang | where_exp: "post", "post.category == 'tech' or post.category contains 'tech' or post.categories contains 'tech'" | sort: "date" | reverse %}
+      {% assign filtered_posts = site.posts | where: "lang", current_lang | where: "category", "tech" | sort: "date" | reverse %}
     {% elsif current_category == 'product' %}
-      {% assign filtered_posts = site.posts | where: "lang", current_lang | where_exp: "post", "post.category == 'product' or post.category contains 'product' or post.categories contains 'product'" | sort: "date" | reverse %}
+      {% assign filtered_posts = site.posts | where: "lang", current_lang | where: "category", "product" | sort: "date" | reverse %}
     {% else %}
       {% assign filtered_posts = site.posts | where: "lang", current_lang | sort: "date" | reverse %}
     {% endif %}
