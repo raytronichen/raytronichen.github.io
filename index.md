@@ -6,19 +6,19 @@ permalink: /
 
 <div class="home">
   <div class="hero">
-    <p class="intro-text">
-      Product features, updates, and user stories<br>
-      Discover how ePaper frames transform your space<br>
-      Real experiences from real users.
+    <p class="intro-text" data-en="Where technology meets stillness<br>Calm, reflective, and energy-efficient —<br>a piece of living artwork quietly powered by ePaper." data-zh="科技与静谧相遇<br>平静、沉思、节能 —<br>由电子纸静静驱动的活艺术品。">
+      Where technology meets stillness<br>
+      Calm, reflective, and energy-efficient —<br>
+      a piece of living artwork quietly powered by ePaper.
     </p>
-    <img src="/pics/main.jpeg" alt="ePaper Product" class="intro-image">
+    <img src="/pics/main.jpeg" alt="ePaper Frame" class="intro-image">
   </div>
 
   <div class="posts">
-    <h2 class="posts-title">Latest Product Posts</h2>
+    <h2 class="posts-title" data-en="Latest Posts" data-zh="最新文章">Latest Tech Posts</h2>
     <ul class="post-list">
       {% assign current_lang = page.lang | default: site.default_lang %}
-      {% assign filtered_posts = site.posts | where: "lang", current_lang | where_exp: "post", "post.category == 'product' or post.category contains 'product' or post.categories contains 'product'" | sort: "date" | reverse %}
+      {% assign filtered_posts = site.posts | where: "lang", current_lang | where_exp: "post", "post.category == 'tech' or post.category contains 'tech' or post.categories contains 'tech'" | sort: "date" | reverse %}
       {% for post in filtered_posts %}
       <li>
         <span class="post-meta">
