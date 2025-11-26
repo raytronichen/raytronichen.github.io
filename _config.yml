@@ -36,11 +36,8 @@ keywords: eink, epaper, epaper frame, eink frame, epaper frames, eink frames, ei
 # Build settings
 markdown: kramdown
 highlighter: rouge
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
 
-# Theme settings (using custom layouts, no theme)
+# Using custom layouts (no theme)
 
 # Navigation
 navigation:
@@ -59,13 +56,7 @@ social:
   email: info@epaperframe
 
 # Google Analytics
-# Get your tracking ID from: https://analytics.google.com/
-# Format: G-XXXXXXXXXX (for GA4)
 google_analytics: G-09V9Z8YCNG
-
-# Pagination
-paginate: 10
-paginate_path: "/page:num/"
 
 # Exclude from processing
 exclude:
@@ -76,4 +67,9 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+  - DUAL_SECTIONS_GUIDE.md
+  - SETUP_PRODUCT_REPO.md
+  - GITHUB_PAGES_SETUP.md
+  - QUICK_SETUP_CHECKLIST.md
+  - README.md
 
