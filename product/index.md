@@ -19,7 +19,7 @@ permalink: /product/
     <h2 class="posts-title">Latest Product Posts</h2>
     <ul class="post-list">
       {% assign current_lang = page.lang | default: site.default_lang %}
-      {% assign filtered_posts = site.posts | where: "lang", current_lang | where_exp: "post", "post.category == 'product' or post.category contains 'product' or post.categories contains 'product'" | sort: "date" | reverse %}
+      {% assign filtered_posts = site.posts | where: "lang", current_lang | where: "category", "product" | sort: "date" | reverse %}
       {% for post in filtered_posts %}
       <li>
         <span class="post-meta">

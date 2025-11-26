@@ -18,7 +18,7 @@ permalink: /
     <h2 class="posts-title" data-en="Latest Posts" data-zh="最新文章">Latest Tech Posts</h2>
     <ul class="post-list">
       {% assign current_lang = page.lang | default: site.default_lang %}
-      {% assign filtered_posts = site.posts | where: "lang", current_lang | where_exp: "post", "post.category == 'tech' or post.category contains 'tech' or post.categories contains 'tech'" | sort: "date" | reverse %}
+      {% assign filtered_posts = site.posts | where: "lang", current_lang | where: "category", "tech" | sort: "date" | reverse %}
       {% for post in filtered_posts %}
       <li>
         <span class="post-meta">

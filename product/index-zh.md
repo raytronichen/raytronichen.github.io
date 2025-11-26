@@ -18,7 +18,7 @@ permalink: /product/zh/
   <div class="posts">
     <h2 class="posts-title">最新产品文章</h2>
     <ul class="post-list">
-      {% assign filtered_posts = site.posts | where: "lang", "zh" | where_exp: "post", "post.category == 'product' or post.category contains 'product' or post.categories contains 'product'" | sort: "date" | reverse %}
+      {% assign filtered_posts = site.posts | where: "lang", "zh" | where: "category", "product" | sort: "date" | reverse %}
       {% for post in filtered_posts %}
       <li>
         <span class="post-meta">{{ post.date | date: "%Y年%m月%d日" }}</span>
