@@ -79,50 +79,31 @@ permalink: /subscribe/
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting...';
 
-      // 使用 GitHub Gists API 存储邮箱到 Secret Gist（只有您可见）
-      // 需要先创建 Secret Gist 和 GitHub Personal Access Token
+      // 使用 GitHub Actions Workflow 处理订阅（更安全，token 存储在 GitHub Secrets 中）
+      const repoOwner = 'raytronichen'; // 替换为你的 GitHub 用户名
+      const repoName = 'raytronichen.github.io'; // 替换为你的仓库名
+      const workflowToken = ''; // 替换为你的 GitHub Personal Access Token（需要 repo 权限用于触发 workflow）
       
-      const gistId = ''; // 替换为你的 Secret Gist ID（见配置说明）
-      const githubToken = ''; // 替换为你的 GitHub Personal Access Token（需要 gist 权限）
-      
-      if (gistId && githubToken) {
-        // 获取现有 Gist 内容
-        fetch(`https://api.github.com/gists/${gistId}`, {
+      if (workflowToken) {
+        // 通过 repository_dispatch 触发 GitHub Actions workflow
+        fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/dispatches`, {
+          method: 'POST',
           headers: {
-            'Authorization': `token ${githubToken}`,
-            'Accept': 'application/vnd.github.v3+json'
-          }
+            'Authorization': `token ${workflowToken}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            event_type: 'email-subscribe',
+            client_payload: {
+              email: email,
+              lang: currentLang,
+              timestamp: new Date().toISOString()
+            }
+          })
         })
           .then(response => {
-            if (!response.ok) {
-              throw new Error('Failed to fetch Gist');
-            }
-            return response.json();
-          })
-          .then(gistData => {
-            const existingContent = gistData.files['emails.txt']?.content || '';
-            const newEntry = `${email} | ${new Date().toISOString()} | ${currentLang}\n`;
-            const newContent = existingContent + newEntry;
-            
-            // 更新 Gist
-            return fetch(`https://api.github.com/gists/${gistId}`, {
-              method: 'PATCH',
-              headers: {
-                'Authorization': `token ${githubToken}`,
-                'Accept': 'application/vnd.github.v3+json',
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                files: {
-                  'emails.txt': {
-                    content: newContent
-                  }
-                }
-              })
-            });
-          })
-          .then(response => {
-            if (response.ok) {
+            if (response.status === 204) {
               showMessage('Thank you for subscribing! We\'ll be in touch soon.', false);
               form.reset();
             } else {
@@ -135,9 +116,9 @@ permalink: /subscribe/
                 if (response.status === 401) {
                   errorMsg = 'Authentication failed. Please check your token.';
                 } else if (response.status === 404) {
-                  errorMsg = 'Gist not found. Please check your Gist ID.';
+                  errorMsg = 'Repository not found. Please check your configuration.';
                 } else if (response.status === 403) {
-                  errorMsg = 'Permission denied. Please check your token has gist permission.';
+                  errorMsg = 'Permission denied. Please check your token has repo permission.';
                 }
                 throw new Error(errorMsg);
               });
@@ -153,7 +134,7 @@ permalink: /subscribe/
           });
       } else {
         // 如果未配置，显示提示信息
-        console.warn('Gist ID or Token not configured');
+        console.warn('Workflow token not configured');
         showMessage('Subscription service is not configured. Please contact us directly.', true);
         submitBtn.disabled = false;
         submitBtn.textContent = 'Subscribe';
