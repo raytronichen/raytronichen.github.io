@@ -18,7 +18,7 @@ Are these claims trustworthy? **I don’t buy it.**
 
 ## E6’s color gamut is limited and discrete
 
-E Ink Spectra 6 is built on a six-particle system: black, white, red, yellow, blue, green.
+E Ink Spectra 6 is built on a six-color system: black, white, red, yellow, blue, green.
 
 ### Limited
 Many promos boost screen colors in post, or even Photoshop an image onto the frame.
@@ -32,7 +32,7 @@ Left: inkjet printer; middle: InkJoy with E6; right: glossy photo paper
 
 ### Discrete
 
-Each LCD pixel can be seen as three RGB subpixels, each channel with 8–10 bits, which means each pixel has 256*256*256 = 16,777,216 colors. Each printer dot (also a pixel) can have four (or more) CMYK channels, stacking different droplet sizes. But with E6, **each pixel can only show one of the six base colors**.
+Each LCD pixel can be seen as three RGB subpixels, each channel with 8–10 bits, which means each pixel has 256x256x256 = 16,777,216 colors. Each printer dot (also a pixel) can have four (or more) CMYK channels, stacking different droplet sizes. But with E6, **each pixel can only show one of the six base colors**.
 So if you judge it by LCD or printer capabilities, E6 effectively has **just 6 colors**!
 
 ## Can dithering add colors?
