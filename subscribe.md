@@ -87,7 +87,7 @@ permalink: /subscribe/
       // ⚠️ 重要：请在 GitHub 网页上编辑此文件来填写 token，不要在本地填写
       // 因为 GitHub 推送保护会阻止包含 token 的推送
       // 在 GitHub 仓库页面：点击此文件 → 编辑（铅笔图标）→ 填入 token → 提交
-      const workflowToken = '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'; // 填写你的 Workflow Token（需要 repo 权限）
+      const workflowToken = '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'; // 填写你的 Workflow Token（需要 repo 权限）
       
       if (workflowToken) {
         // 通过 repository_dispatch 触发 GitHub Actions workflow
