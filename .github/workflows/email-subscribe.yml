@@ -1,74 +1,48 @@
 name: Email Subscribe Handler
 
 on:
-  issues:
-    types: [opened]
+  repository_dispatch:
+    types: [email-subscribe]
 
 jobs:
   save-email:
-    # 只处理带有 email-subscription 标签的 issue
-    if: contains(github.event.issue.labels.*.name, 'email-subscription')
     runs-on: ubuntu-latest
     steps:
-      - name: Extract and Save Email
+      - name: Save Email to Secret Gist
         uses: actions/github-script@v7
         env:
           GIST_ID: ${{ secrets.GIST_ID }}
           GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GIST_TOKEN }}
           script: |
-            const issueBody = context.payload.issue.body;
-            const issueTitle = context.payload.issue.title;
-            const issueNumber = context.payload.issue.number;
+            const email = '${{ github.event.client_payload.email }}';
+            const lang = '${{ github.event.client_payload.lang }}' || 'en';
+            const timestamp = '${{ github.event.client_payload.timestamp }}' || new Date().toISOString();
             
-            console.log(`Processing issue #${issueNumber}: ${issueTitle}`);
+            const gistId = process.env.GIST_ID;
             
-            // 从 issue 标题提取邮箱
-            const emailMatch = issueTitle.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
-            
-            if (!emailMatch) {
-              console.error('No email found in issue title');
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber,
-                body: '❌ Unable to extract email address from the issue title.'
-              });
-              return;
-            }
-            
-            const email = emailMatch[0];
-            
-            // 从 issue body 提取语言和时间戳
-            const langMatch = issueBody.match(/Language: (\w+)|语言: (\w+)/);
-            const lang = langMatch ? (langMatch[1] || langMatch[2]) : 'en';
-            
-            const timestampMatch = issueBody.match(/Timestamp: ([^\n]+)|时间: ([^\n]+)/);
-            const timestamp = timestampMatch ? (timestampMatch[1] || timestampMatch[2]) : new Date().toISOString();
-            
-            console.log(`Email: ${email}, Language: ${lang}, Timestamp: ${timestamp}`);
+            console.log(`Processing subscription: ${email} (${lang})`);
             
             try {
-              // 使用 Gist Token 保存到 Gist
-              const { Octokit } = require('@octokit/rest');
-              const octokit = new Octokit({
-                auth: process.env.GIST_TOKEN
-              });
-              
-              const gistId = process.env.GIST_ID;
-              
               // 获取现有 Gist 内容
-              const gistResponse = await octokit.gists.get({
+              const gistResponse = await github.rest.gists.get({
                 gist_id: gistId
               });
               
               const existingContent = gistResponse.data.files['emails.txt']?.content || '';
+              
+              // 检查邮箱是否已存在（防止重复订阅）
+              if (existingContent.includes(email)) {
+                console.log('⚠️ Email already subscribed');
+                return;
+              }
+              
               const newEntry = `${email} | ${timestamp} | ${lang}\n`;
               const newContent = existingContent + newEntry;
               
               // 更新 Gist
-              await octokit.gists.update({
+              await github.rest.gists.update({
                 gist_id: gistId,
                 files: {
                   'emails.txt': {
@@ -77,32 +51,8 @@ jobs:
                 }
               });
               
-              console.log('✅ Email saved to Gist successfully!');
-              
-              // 添加成功评论并关闭 issue
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber,
-                body: `✅ Email subscription recorded successfully!\n\n- Email: \`${email}\`\n- Language: ${lang}\n- Timestamp: ${timestamp}\n\nThis issue will now be closed automatically.`
-              });
-              
-              await github.rest.issues.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber,
-                state: 'closed'
-              });
-              
+              console.log('✅ Email saved to Secret Gist successfully!');
             } catch (error) {
               console.error('❌ Error saving email:', error);
-              
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber,
-                body: `❌ Failed to save email subscription.\n\nError: ${error.message}\n\nPlease check the workflow logs for more details.`
-              });
-              
               throw error;
             }
