@@ -139,9 +139,9 @@ permalink: /subscribe-zh/
             submitBtn.textContent = '订阅';
           });
       } else {
-        // 如果未配置，显示提示信息
+        // 如果未配置，显示友好的提示信息
         console.warn('Workflow token 未配置');
-        showMessage('订阅服务未配置，请直接联系我们。', true);
+        showMessage('⚙️ 订阅服务需要配置，请查看 EMAIL_SUBSCRIBE_FINAL_GUIDE.md', true);
         submitBtn.disabled = false;
         submitBtn.textContent = '订阅';
       }

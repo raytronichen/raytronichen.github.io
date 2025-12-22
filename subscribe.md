@@ -139,9 +139,9 @@ permalink: /subscribe/
             submitBtn.textContent = 'Subscribe';
           });
       } else {
-        // 如果未配置，显示提示信息
+        // 如果未配置，显示友好的提示信息
         console.warn('Workflow token not configured');
-        showMessage('Subscription service is not configured. Please contact us directly.', true);
+        showMessage('⚙️ Subscription service needs configuration. Please check EMAIL_SUBSCRIBE_FINAL_GUIDE.md', true);
         submitBtn.disabled = false;
         submitBtn.textContent = 'Subscribe';
       }
