@@ -79,66 +79,55 @@ permalink: /subscribe-zh/
       submitBtn.disabled = true;
       submitBtn.textContent = '提交中...';
 
-      // 使用 GitHub Actions Workflow 处理订阅（更安全，token 存储在 GitHub Secrets 中）
+      // 使用 GitHub Issues API（无需 token，完全公开接口）
+      // GitHub Actions 会自动监听 issue 创建，并将邮箱保存到 Gist
       const repoOwner = 'raytronichen'; // 替换为你的 GitHub 用户名
       const repoName = 'raytronichen.github.io'; // 替换为你的仓库名
-      const workflowToken = ''; // 替换为你的 GitHub Personal Access Token（需要 repo 权限用于触发 workflow）
       
-      if (workflowToken) {
-        // 通过 repository_dispatch 触发 GitHub Actions workflow
-        fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/dispatches`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `token ${workflowToken}`,
-            'Accept': 'application/vnd.github.v3+json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            event_type: 'email-subscribe',
-            client_payload: {
-              email: email,
-              lang: currentLang,
-              timestamp: new Date().toISOString()
-            }
-          })
+      // 创建一个带有特殊标签的 issue（无需认证）
+      const issueTitle = `邮箱订阅: ${email}`;
+      const issueBody = `**新的邮箱订阅**\n\n- 邮箱: ${email}\n- 语言: ${currentLang}\n- 时间: ${new Date().toISOString()}\n- 来源: 订阅页面\n\n---\n*此 issue 将由 GitHub Actions 自动处理并关闭。*`;
+      
+      fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/issues`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: issueTitle,
+          body: issueBody,
+          labels: ['email-subscription']
         })
-          .then(response => {
-            if (response.status === 204) {
-              showMessage('感谢您的订阅！我们会尽快与您联系。', false);
-              form.reset();
-            } else {
-              return response.json().then(data => {
-                console.error('API 错误:', data);
-                let errorMsg = '保存邮箱失败';
-                if (data.message) {
-                  errorMsg += ': ' + data.message;
-                }
-                if (response.status === 401) {
-                  errorMsg = '认证失败，请检查您的 Token。';
-                } else if (response.status === 404) {
-                  errorMsg = '仓库未找到，请检查配置。';
-                } else if (response.status === 403) {
-                  errorMsg = '权限不足，请检查您的 Token 是否有 repo 权限。';
-                }
-                throw new Error(errorMsg);
-              });
-            }
-          })
-          .catch(error => {
-            console.error('错误详情:', error);
-            showMessage(error.message || '提交失败，请稍后重试。', true);
-          })
-          .finally(() => {
-            submitBtn.disabled = false;
-            submitBtn.textContent = '订阅';
-          });
-      } else {
-        // 如果未配置，显示提示信息
-        console.warn('Workflow token 未配置');
-        showMessage('订阅服务未配置，请直接联系我们。', true);
-        submitBtn.disabled = false;
-        submitBtn.textContent = '订阅';
-      }
+      })
+        .then(response => {
+          if (response.status === 201) {
+            showMessage('感谢您的订阅！我们会尽快与您联系。', false);
+            form.reset();
+          } else {
+            return response.json().then(data => {
+              console.error('API 错误:', data);
+              let errorMsg = '保存邮箱失败';
+              if (data.message) {
+                errorMsg += ': ' + data.message;
+              }
+              if (response.status === 403) {
+                errorMsg = '无法提交，仓库可能限制了 issue 创建。';
+              } else if (response.status === 404) {
+                errorMsg = '仓库未找到，请检查配置。';
+              }
+              throw new Error(errorMsg);
+            });
+          }
+        })
+        .catch(error => {
+          console.error('错误详情:', error);
+          showMessage(error.message || '提交失败，请稍后重试。', true);
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = '订阅';
+        });
     }
 
     // 事件监听
