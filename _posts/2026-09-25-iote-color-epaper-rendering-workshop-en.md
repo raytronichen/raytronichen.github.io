@@ -46,7 +46,7 @@ Then we showed the original image in the center. It was deliberately chosen beca
 
 At this point, would people still prefer method A, or method B?
 
-In fact, method A was designed to preserve hue and tonal separation as much as possible. Method B pushes colors that cannot be shown toward a purer, more saturated result.
+In fact, method A (InkJoy ISFR) was designed to preserve hue and tonal separation as much as possible. Method B pushes colors that cannot be shown toward a purer, more saturated result.
 
 ## One Method Cannot Handle Every Image
 
