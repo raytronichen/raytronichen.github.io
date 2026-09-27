@@ -14,8 +14,6 @@ On August 26, 2026, during IOTE 2026 and the 4th ePaper Innovation Application C
 
 Three guests from different parts of the chain joined the discussion. Zheng Hanyao has long worked on low-level ePaper driving and open-source controllers. Liu Bo represented the M5Stack developer hardware ecosystem. Fang Jijun came from the system-solution side, with experience in medium and large E6 products and commercial delivery.
 
-We invited them because “looking good” is not a single technical parameter. Panel makers, driver engineers, algorithm engineers, solution providers, brands, and end users may all be looking at the same screen, but they are not judging the same thing.
-
 ![IOTE 2026 full-color ePaper image rendering workshop](/pics/workshop/iote-workshop-scene.jpg)
 *The workshop at the ePaper Industry Alliance salon area during IOTE 2026.*
 
@@ -68,7 +66,7 @@ This workshop did not provide a standard answer.
 
 Full-color ePaper is no longer a lab demo. It is appearing in photo frames, signage, open-source hardware, and many industry terminals. In the next few years, competition will increasingly focus on “looking good”: how colors are mapped, how images are accepted, whether different content needs different strategies, and who can put those strategies into stable real products.
 
-That, to me, is where “looking good” really becomes valuable. Even on a display with a limited and discrete gamut, image understanding, color mapping, and product-level tuning can still create images that people find good to look at.
+That, to me, is where "looking good" really becomes valuable. Even on a display with a limited and discrete gamut, image understanding, color mapping, and product-level tuning can still create images that people find "good" to look at.
 
 <div style="color:#777;font-size:13px;font-style:italic;line-height:1.7;">
 <p style="margin:0 0 0.8em;"><strong>Host and Guests</strong></p>
