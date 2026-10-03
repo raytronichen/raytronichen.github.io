@@ -15,10 +15,10 @@ permalink: /
   </div>
 
   <div class="posts">
-    <h2 class="posts-title" data-en="Latest Posts" data-zh="最新文章">Latest Tech Posts</h2>
+    <h2 class="posts-title" data-en="Latest Posts" data-zh="最新文章">Latest Posts</h2>
     <ul class="post-list">
       {% assign current_lang = page.lang | default: site.default_lang %}
-      {% assign filtered_posts = site.posts | where: "lang", current_lang | where: "category", "tech" | sort: "date" | reverse %}
+      {% assign filtered_posts = site.posts | where: "lang", current_lang | sort: "date" | reverse %}
       {% for post in filtered_posts %}
       <li>
         <span class="post-meta">
