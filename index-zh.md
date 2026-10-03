@@ -8,8 +8,7 @@ permalink: /zh/
   <div class="hero">
     <p class="intro-text">
       科技与静谧相遇<br>
-      平静、沉思、节能 —<br>
-      由电子纸静静驱动的活艺术品。
+      由电子纸驱动的艺术品
     </p>
     <img src="/pics/main.jpeg" alt="ePaper Frame" class="intro-image">
   </div>
