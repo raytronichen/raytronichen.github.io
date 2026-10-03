@@ -15,9 +15,9 @@ permalink: /zh/
   </div>
 
   <div class="posts">
-    <h2 class="posts-title">最新技术文章</h2>
+    <h2 class="posts-title">最新文章</h2>
     <ul class="post-list">
-      {% assign filtered_posts = site.posts | where: "lang", "zh" | where: "category", "tech" | sort: "date" | reverse %}
+      {% assign filtered_posts = site.posts | where: "lang", "zh" | sort: "date" | reverse %}
       {% for post in filtered_posts %}
       <li>
         <span class="post-meta">{{ post.date | date: "%Y年%m月%d日" }}</span>
