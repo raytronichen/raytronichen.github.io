@@ -7,25 +7,23 @@ ref: why-wifi-long-connection
 permalink: /2026/10/03/why-wifi-long-connection/
 category: product
 tags: [InkJoy, frame, Wi-Fi, product]
-excerpt: Why does InkJoy Frame stay connected over Wi-Fi instead of using NFC or Bluetooth for local transfers? Because after a one-time Wi-Fi setup, the frame can become part of everyday life.
+excerpt: Why does InkJoy Frame stay connected to Wi-Fi instead of using NFC or Bluetooth for local transfers? Because after a one-time Wi-Fi setup, the frame can become part of everyday life.
 ---
 
-Someone asked: Why does InkJoy Frame need a persistent Wi-Fi connection instead of using NFC or Bluetooth to transfer photos directly? Wouldn’t it be easier to just tap your phone against the frame?
+Someone once asked me, “Other frames can transfer a photo with just an NFC tap. It looks so convenient! Why does InkJoy Frame need a persistent Wi-Fi connection and Wi-Fi setup?”
 
-If you only watch the demo, it certainly looks that way: bring the phone close, tap the frame, and the photo appears.
+That’s true if you only watch a demo. NFC or Bluetooth can seem more convenient: tap once to connect and transfer. But if you think about how you will actually use InkJoy Frame after bringing it home, the picture changes.
 
-But a frame is not made for a one-time demo. What matters to us is whether changing the photo remains just as easy after you bring it home.
+## Scenario 1: Sending One Photo — A Wi-Fi Frame Is More Convenient
 
-## Scenario 1: Sending One Photo
-
-Even for a single photo, Wi-Fi is more convenient.
+Even if you only want to send one photo to the frame, Wi-Fi is more convenient.
 
 Tap-to-transfer usually takes four steps:
 
 1. Open the app
 2. Choose a photo
 3. Tap “Send to Frame”
-4. Walk over to the frame, tap it with your phone, and wait for the transfer to finish
+4. **Walk over to the frame and tap it with your phone (but what if the frame is mounted too high?)**, then wait for the transfer to finish
 
 Once InkJoy Frame has been set up, it only takes three:
 
@@ -33,21 +31,21 @@ Once InkJoy Frame has been set up, it only takes three:
 2. Choose a photo
 3. Tap “Send to Frame”
 
-## Scenario 2: More Than One Frame at Home
+## Scenario 2: More Than One Frame at Home — A Wi-Fi Frame Is More Convenient
 
-One in the living room, one in the bedroom, perhaps another in the study. Do you really want to walk around and tap every frame whenever you change a photo?
+If you have several InkJoy Frames—one customer ordered 17 at once!—you might put one in the living room, another in the bedroom, and one more in the study. Do you really want to walk around and tap every frame whenever you change a photo?
 
-With a persistent connection, simply choose the photo and the destination frame in the app, then send. Wherever the frames are, there is no need to visit them one by one.
+With a persistent Wi-Fi connection, simply choose the photo and destination frame in the app or [Web Studio](https://studio.inkjoyframe.com), then tap Send. Wherever the frames are, there is no need to visit them one by one.
 
-## Scenario 3: Sending Photos to a Frame Far Away
+## Scenario 3: Sending Photos to a Frame Far Away — Something Perhaps Only a Wi-Fi Frame Can Do
 
-You might take a favorite photo while traveling and want to send it to the frame at home. Or you may want your parents to see a new photo of their grandchildren.
+This is one of my favorite features! Whenever I travel for work, I take photos of interesting things and send them to the frame at home. Then I message my wife on WeChat: “Look at the wall!”
 
-As long as the frame stays connected, distance is no longer a barrier. Family members can share photos too, bringing new moments to one another’s frames.
+Only a frame like InkJoy Frame that stays connected to Wi-Fi can make this kind of instant remote sharing possible.
 
-## Scenario 4: The Frame Updates on Its Own
+## Scenario 4: The Frame Updates on Its Own — Something Perhaps Only a Wi-Fi Frame Can Do
 
-Photos can rotate automatically on a schedule. As InkJoy connects with more apps in the future, new content can also be delivered directly to the frame.
+InkJoy Frame can switch its displayed content automatically on a schedule. As it connects with more Mini Apps in the future, new content can also be pushed to the frame automatically.
 
 None of this requires someone to stand beside the frame or tap it with a phone. By staying connected, the frame can receive new content whenever it arrives.
 
