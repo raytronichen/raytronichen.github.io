@@ -295,6 +295,142 @@ body {
   margin: 20px 0;
 }
 
+.post-content .zoom-figure {
+  margin: 28px 0;
+}
+
+.post-content a.zoomable {
+  display: block;
+  cursor: zoom-in;
+  text-decoration: none;
+}
+
+.post-content a.zoomable:hover {
+  text-decoration: none;
+}
+
+.post-content .zoom-figure img {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+.post-content .zoom-figure figcaption {
+  margin-top: 8px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.post-content .zoom-figure {
+  margin: 24px 0 28px;
+}
+
+.post-content .zoom-figure a {
+  display: block;
+  text-decoration: none;
+}
+
+.post-content .zoom-figure img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+  cursor: zoom-in;
+}
+
+.post-content .zoom-figure figcaption {
+  margin-top: 8px;
+  color: #666;
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+}
+
+.img-zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.img-zoom.is-open {
+  display: flex;
+  flex-direction: column;
+}
+
+.img-zoom-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+}
+
+.img-zoom-stage.is-dragging {
+  cursor: grabbing;
+}
+
+.img-zoom-stage img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+  margin: 0;
+  transform-origin: 0 0;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.img-zoom-stage img.is-pixelated {
+  image-rendering: pixelated;
+}
+
+.img-zoom-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+}
+
+.img-zoom-bar button,
+.img-zoom-scale {
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 4px;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+}
+
+.img-zoom-bar button {
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.img-zoom-bar button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.img-zoom-scale {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  padding: 0 8px;
+}
+
+body.img-zoom-open {
+  overflow: hidden;
+}
+
 .post-content a {
   color: #2563eb;
   text-decoration: none;
